@@ -1,4 +1,5 @@
 import { NavLink,Link} from "react-router-dom"
+import img from "../images/avatar-icon.png"
 
 export default function Header(){
   return (
@@ -10,6 +11,12 @@ export default function Header(){
             <NavLink className={({isActive}) => isActive ? "active-link" : null} to="/host">Host</NavLink>
             <NavLink className={({isActive}) => isActive ? "active-link" : null} to="/about">About</NavLink>
             <NavLink className={({isActive}) => isActive ? "active-link" : null} to="/vans">Vans</NavLink>
+            <Link to="login" className="login-link">
+                    <img
+                        src={img}
+                        className="login-icon"
+                    />
+                </Link>
               {/* setting underline with styles
 
                  const styles = {

@@ -1,33 +1,21 @@
+import { NavLink,Link,Outlet, useLoaderData  } from "react-router-dom"
+import { getHostVans } from "../api";
 
-import server from "../server"
-import { useParams,NavLink,Link,Outlet } from "react-router-dom"
-import { useEffect,useState } from "react"
-
+export function loader({params}){
+    return getHostVans(params.id)
+}
 
 export default function HostCurrentVanDetail(){
-    const params = useParams();
-    const [currentVan,setCurrentVan] = useState(null)
-
+    const currentVan = useLoaderData()
     const activeStyles = {
         fontWeight: "bold",
         textDecoration: "underline",
         color: "#161616"
     }
 
-    useEffect(() => {
-        async function getCurrentVan(){
-            const res = await fetch(`/api/host/vans/${params.id}`)
-            const data = await res.json();
-            setCurrentVan(data.vans);
-        }
-        getCurrentVan()
-    },[])
-
-    if(!currentVan) return <h1>Loading...</h1>
-
     return (
     <section>
-       <Link to=".." relative="path" className="back-button">&larr; <span>Back to all vans</span></Link>
+       <Link to="/host/vans" relative="path" className="back-button">&larr; <span>Back to all vans</span></Link>
        <div className="host-van-detail-layout-container">
             <div className="host-van-detail">
                 <img src={currentVan.imageUrl}/>
