@@ -1,7 +1,10 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import { useState } from "react"
 export default function Login() {
     const [loginFormData, setLoginFormData] = useState({ email: "", password: "" })
+    const [searchParams,setSearchParams] = useSearchParams()
+
+    const message = searchParams.get("message")
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -36,6 +39,7 @@ export default function Login() {
                     value={loginFormData.password}
                 />
                 <button>Log in</button>
+                {message && <h1>{message}</h1>}
             </form>
         </div>
     )

@@ -36,11 +36,20 @@ import "./server"
           loader={vanDetailLoader}
           ></Route>
           <Route path="host" element={<HostLayout/>} >
-            <Route index element={<Dashboard/>} loader={async () =>  {
-              await requireAuth()
-                return null
-              }}></Route>
-            <Route path="income" element={<Income/>}></Route>
+            <Route
+            index
+            element={<Dashboard/>}
+            loader={async () =>  {
+              return await requireAuth()
+              }}
+              ></Route>
+            <Route
+            path="income"
+            element={<Income/>}
+            loader={async () =>  {
+              return await requireAuth()
+              }}
+              ></Route>
             <Route
             path="vans"
             element={<HostVans/>}
@@ -52,11 +61,35 @@ import "./server"
             element={<HostVanDetailLayout/>}
             loader={hostVanDetailLoader}
             >
-              <Route index element={<HostVanInfo/>}></Route>
-              <Route path="pricing" element={<HostVanPricing/>}></Route>
-              <Route path="photos" element={<HostVanPhotos/>}></Route>
+              <Route
+              index
+              element={<HostVanInfo/>}
+              loader={async () =>  {
+                return await requireAuth()
+                }}
+              ></Route>
+              <Route
+              path="pricing"
+              element={<HostVanPricing/>}
+              loader={async () =>  {
+                return await requireAuth()
+                }}
+              ></Route>
+              <Route
+              path="photos"
+              element={<HostVanPhotos/>}
+              loader={async () =>  {
+                return await requireAuth()
+                }}
+              ></Route>
             </Route>
-            <Route path="reviews" element={<Reviews/>}></Route>
+            <Route
+            path="reviews"
+            element={<Reviews/>}
+            loader={async () =>  {
+              return await requireAuth()
+              }}
+            ></Route>
           </Route>
           <Route path="*" element={<NotFound/>}></Route>
         </Route>
