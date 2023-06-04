@@ -1,7 +1,12 @@
-import { NavLink,Link} from "react-router-dom"
+import { NavLink,Link, redirect} from "react-router-dom"
 import img from "../images/avatar-icon.png"
 
 export default function Header(){
+
+  function fakeLogOut() {
+    localStorage.removeItem("loggedin")
+}
+
   return (
      <header>
             <Link className="site-logo" to="/">#VANLIFE</Link>
@@ -17,6 +22,7 @@ export default function Header(){
                         className="login-icon"
                     />
                 </Link>
+                <button className="log-out" onClick={fakeLogOut}>Log Out</button>
               {/* setting underline with styles
 
                  const styles = {
