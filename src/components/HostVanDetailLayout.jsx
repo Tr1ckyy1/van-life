@@ -18,7 +18,7 @@ export default function HostCurrentVanDetail(){
 
     return (
     <section>
-        <Suspense fallback={<h1>Loading...</h1>}>
+        <Suspense fallback={<h1 className="loading">Loading...</h1>}>
             <Await resolve={currentVanPromise.van}>
         {
         currentVan => {

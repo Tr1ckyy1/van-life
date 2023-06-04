@@ -40,7 +40,7 @@ function displayHostVans (vans){
     return (
         <section>
             <h1 className="host-vans-title">Your listed vans</h1>
-            <Suspense fallback={<h1>Loading...</h1>}>
+            <Suspense fallback={<h1 className="loading">Loading...</h1>}>
                 <Await resolve={vansPromise.vans}>
                     {displayHostVans}
                 </Await>

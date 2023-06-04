@@ -778,3 +778,7 @@ img.graph {
   color: red;
   font-weight:900;
 }
+
+.loading{
+  padding-inline:20px;
+}

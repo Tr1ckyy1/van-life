@@ -1,4 +1,4 @@
-import { useState, Suspense } from "react"
+import { Suspense } from "react"
 import { Link, useSearchParams, useLoaderData, defer, Await } from "react-router-dom"
 import { getVans } from "../../api"
 
