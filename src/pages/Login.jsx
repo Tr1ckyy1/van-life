@@ -46,23 +46,21 @@ export default function Login() {
       {errorMessage && <h3 className="red">{errorMessage}</h3>}
       {message && <h3 className="red">{message}</h3>}
       <Form replace method="post" className="login-form">
-        <input name="email" type="email" placeholder="Email address" />
-        <input name="password" type="password" placeholder="Password" />
+        <input
+          value="user@com"
+          name="email"
+          type="email"
+          placeholder="Email address"
+        />
+        <input
+          value="pass123"
+          name="password"
+          type="password"
+          placeholder="Password"
+        />
         <button disabled={navigation.state === "submitting"}>
           {navigation.state === "submitting" ? "Logging in..." : "Log in"}
         </button>
-        <div className="testing">
-          <h3 className="helping-info">
-            For testing purposes, try these credentials:
-          </h3>
-          <p>
-            Email: <span>user@com</span>
-          </p>
-          <p>
-            Password: <span>pass123</span>
-          </p>
-          {/* <span>Email: user@com</span><span>Password: pass123</span></h3> */}
-        </div>
       </Form>
     </div>
   );
