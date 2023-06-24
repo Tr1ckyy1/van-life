@@ -27,6 +27,7 @@ import Login, {
   action as loaderAction,
 } from "./pages/Login";
 import { requireAuth } from "./utils";
+import { LoginProvider } from "./Context";
 
 import "./server";
 
@@ -100,7 +101,11 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <LoginProvider>
+      <RouterProvider router={router} />;
+    </LoginProvider>
+  );
 }
 
 export default App;

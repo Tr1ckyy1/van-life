@@ -1,10 +1,9 @@
 import { NavLink, Link, redirect } from "react-router-dom";
 import img from "../images/avatar-icon.png";
+import { useLog } from "../Context";
 
 export default function Header() {
-  function fakeLogOut() {
-    localStorage.removeItem("loggedin");
-  }
+  const { dispatch, status } = useLog();
 
   return (
     <header>
@@ -32,12 +31,32 @@ export default function Header() {
         >
           Vans
         </NavLink>
-        <Link to="login" className="login-link">
-          <img src={img} className="login-icon" />
-        </Link>
-        <button className="log-out" onClick={fakeLogOut}>
-          Log Out
-        </button>
+
+        {status === "loggedOut" && (
+          <Link to="login" className="login-link">
+            <img src={img} className="login-icon" />
+          </Link>
+        )}
+
+        {status === "loggedIn" && (
+          <Link
+            className="log-out"
+            to="login"
+            onClick={() => dispatch({ type: "logOut" })}
+          >
+            Log Out
+          </Link>
+        )}
+
+        {/* {status === "loggedIn" && (
+          <button
+            className="log-out"
+            onClick={() => dispatch({ type: "logOut" })}
+          >
+            Log Out
+          </button>
+        )} */}
+
         {/* setting underline with styles
 
                  const styles = {

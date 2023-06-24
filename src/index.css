@@ -60,15 +60,14 @@ header a,
   padding: 5px 20px;
 }
 
-.log-out {
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 header a:hover {
   color: #161616;
   text-decoration: underline;
+}
+
+.log-out {
+  font-size: 12px;
+  align-self: center;
 }
 
 header .login-icon {
@@ -175,6 +174,7 @@ footer {
 
 .aboutpage-image {
   max-width: 100%;
+  padding-inline: 20px;
 }
 
 .about-page-content {

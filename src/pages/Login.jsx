@@ -6,6 +6,7 @@ import {
   useNavigation,
 } from "react-router-dom";
 import { loginUser } from "../api";
+import { useLog } from "../Context";
 
 export function loader({ request }) {
   const isLoggedIn = localStorage.getItem("loggedin");
@@ -36,6 +37,7 @@ export async function action({ request }) {
 }
 
 export default function Login() {
+  const { dispatch } = useLog();
   const message = useLoaderData();
   const errorMessage = useActionData();
   const navigation = useNavigation();
@@ -58,7 +60,10 @@ export default function Login() {
           type="password"
           placeholder="Password"
         />
-        <button disabled={navigation.state === "submitting"}>
+        <button
+          onClick={() => dispatch({ type: "logIn" })}
+          disabled={navigation.state === "submitting"}
+        >
           {navigation.state === "submitting" ? "Logging in..." : "Log in"}
         </button>
       </Form>
