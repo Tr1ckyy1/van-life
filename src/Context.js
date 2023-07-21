@@ -1,5 +1,4 @@
 import { createContext, useContext, useReducer } from "react";
-import { redirect } from "react-router-dom";
 
 const LogInContext = createContext();
 
@@ -10,7 +9,7 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case "logIn":
-      return { ...state, status: "loggedIn", loggedIn: true };
+      return { ...state, status: "loggedIn" };
 
     case "logOut":
       //   const response = redirect("/host");

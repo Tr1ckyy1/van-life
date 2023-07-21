@@ -103,7 +103,7 @@ const router = createBrowserRouter(
 function App() {
   return (
     <LoginProvider>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </LoginProvider>
   );
 }
