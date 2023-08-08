@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { loginUser } from "../api";
 import { useLog } from "../Context";
+import { useState } from "react";
 
 export function loader({ request }) {
   const isLoggedIn = localStorage.getItem("loggedin");
@@ -37,6 +38,9 @@ export async function action({ request }) {
 }
 
 export default function Login() {
+  const [email, setEmail] = useState("user@com");
+  const [password, setPassword] = useState("pass123");
+
   const { dispatch } = useLog();
   const message = useLoaderData();
   const errorMessage = useActionData();
@@ -49,16 +53,18 @@ export default function Login() {
       {message && <h3 className="red">{message}</h3>}
       <Form replace method="post" className="login-form">
         <input
-          value="user@com"
+          value={email}
           name="email"
           type="email"
           placeholder="Email address"
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          value="pass123"
+          value={password}
           name="password"
           type="password"
           placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button
           onClick={() => dispatch({ type: "logIn" })}
